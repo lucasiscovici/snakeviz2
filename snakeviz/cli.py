@@ -123,7 +123,7 @@ def main(argv=None):
         w=web.RequestHandler(web.Application(**settings),
                                      httputil.HTTPServerRequest(uri="",connection=rien()))
         from .main import VizHandler
-        html=VizHandler.get(w,filename_,templ="viz2.html")
+        html=VizHandler.get(w,filename_,templ="viz.html")
         html=w.httt.decode("utf-8")
         file= open(f,"w")
         #write then close file
