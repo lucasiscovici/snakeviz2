@@ -4,6 +4,7 @@ import errno
 import subprocess
 import sys
 import tempfile
+import os
 import time
 import uuid
 
