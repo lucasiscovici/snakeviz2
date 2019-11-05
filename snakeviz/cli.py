@@ -123,8 +123,8 @@ def main(argv=None):
         w=web.RequestHandler(web.Application(**settings),
                                      httputil.HTTPServerRequest(uri="",connection=rien()))
         from .main import VizHandler
-        html=VizHandler.get(w,filename_)
-        html=w.httt.decode("utf-8").replace("/static","https://cdn.jsdelivr.net/gh/lucasiscovici/snakeviz2/snakeviz/static")
+        html=VizHandler.get(w,filename_,templ="viz2.html")
+        html=w.httt.decode("utf-8")
         file= open(f,"w")
         #write then close file
         file.write(html)
