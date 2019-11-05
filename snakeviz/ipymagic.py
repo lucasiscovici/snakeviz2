@@ -185,6 +185,8 @@ def open_snakeviz_and_display_in_notebook(filename,opts={}):
             )
         )
         return sv
+    from time import sleep
+    sleep(2)
     display(
         HTML(
             filename=f
