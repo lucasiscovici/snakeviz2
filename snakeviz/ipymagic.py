@@ -81,7 +81,7 @@ else:
                 ip.run_line_magic("prun", line)
             
             if "q" in opts:
-                sys.stdout = sys.stdout
+                sys.stdout = oldq
             # start up a Snakeviz server
             if _check_ipynb() and not ("t" in opts or "new-tab" in opts):
                 if "f" not in opts or "q" in opts:
