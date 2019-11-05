@@ -22,7 +22,7 @@ settings = {
 
 
 class VizHandler(tornado.web.RequestHandler):
-    def get(self, profile_name):
+    def get(self, profile_name,templ="viz.html"):
         abspath = os.path.abspath(profile_name)
         if os.path.isdir(abspath):
             self._list_dir(abspath)
@@ -32,7 +32,7 @@ class VizHandler(tornado.web.RequestHandler):
             except:
                 raise RuntimeError('Could not read %s.' % profile_name)
             self.render(
-                'viz.html', profile_name=profile_name,
+                templ, profile_name=profile_name,
                 table_rows=table_rows(s), callees=json_stats(s))
 
     def _list_dir(self, path):
