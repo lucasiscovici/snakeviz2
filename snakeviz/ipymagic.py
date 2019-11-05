@@ -84,7 +84,7 @@ else:
                 sys.stdout = oldq
             # start up a Snakeviz server
             if _check_ipynb() and not ("t" in opts or "new-tab" in opts):
-                if "f" not in opts or "q" in opts:
+                if "f" not in opts and "q" not in opts:
                     print("Embedding SnakeViz in this document...")
                 sv = open_snakeviz_and_display_in_notebook(filename,opts)
             else:
