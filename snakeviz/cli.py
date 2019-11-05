@@ -124,7 +124,7 @@ def main(argv=None):
                                      httputil.HTTPServerRequest(uri="",connection=rien()))
         from .main import VizHandler
         html=VizHandler.get(w,filename_)
-        html=w.httt
+        html=w.httt.decode("utf-8")
         file= open(f,"w")
         #write then close file
         file.write(html)
