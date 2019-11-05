@@ -118,9 +118,10 @@ def main(argv=None):
     #print(f)
     if f != "None":
         from tornado import web,httputil
+        finished=web.RequestHandler.finish
+        web.RequestHandler.finish=lambda self,html:setattr(self,"httt",html)
         w=web.RequestHandler(web.Application(**settings),
                                      httputil.HTTPServerRequest(uri="",connection=rien()))
-        w.finish=lambda self,html:setattr(self,htht,html)
         from .main import VizHandler
         html=VizHandler.get(w,filename_)
         html=w.htht
@@ -128,6 +129,7 @@ def main(argv=None):
         #write then close file
         file.write(html)
         file.close()
+        web.RequestHandler.finish=finished
         return 0
 
 
