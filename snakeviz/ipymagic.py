@@ -177,10 +177,9 @@ def open_snakeviz_and_display_in_notebook(filename,opts={}):
                 )
             )
         )
-    else:
-        display(
-            HTML(
-                filename=f
-            )
+        return sv
+    display(
+        HTML(
+            filename=f
         )
-    return sv
+    )
