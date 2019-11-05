@@ -167,14 +167,20 @@ def open_snakeviz_and_display_in_notebook(filename,opts={}):
                 if line.strip().startswith("snakeviz web server started"):
                     break
         return sv
-
-    sv = _start_and_wait_when_ready()
-    path = "/snakeviz/%s" % quote(filename, safe="")
-    display(
-        HTML(
-            JUPYTER_HTML_TEMPLATE.format(
-                port=port, path=path, uuid=uuid.uuid1()
+    if f == "None":
+        sv = _start_and_wait_when_ready()
+        path = "/snakeviz/%s" % quote(filename, safe="")
+        display(
+            HTML(
+                JUPYTER_HTML_TEMPLATE.format(
+                    port=port, path=path, uuid=uuid.uuid1()
+                )
             )
         )
-    )
+    else:
+        display(
+            HTML(
+                filename=f
+            )
+        )
     return sv
