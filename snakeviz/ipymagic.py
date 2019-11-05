@@ -147,7 +147,7 @@ def open_snakeviz_and_display_in_notebook(filename,opts={}):
         f="None"
     def _start_and_wait_when_ready():
         import os
-        print(f)
+        #print(f)
         environ = os.environ.copy()
         environ["PYTHONUNBUFFERED"] = "TRUE"
         sv = subprocess.Popen(
@@ -174,8 +174,8 @@ def open_snakeviz_and_display_in_notebook(filename,opts={}):
                 if line.strip().startswith("snakeviz web server started"):
                     break
         return sv
+    sv = _start_and_wait_when_ready()
     if f == "None":
-        sv = _start_and_wait_when_ready()
         path = "/snakeviz/%s" % quote(filename, safe="")
         display(
             HTML(
