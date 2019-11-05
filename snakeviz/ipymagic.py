@@ -73,6 +73,7 @@ else:
             # generate the stats file using IPython's prun magic
             ip = get_ipython()
             if "q" in opts:
+                oldq=sys.stdout
                 sys.stdout = open(os.devnull, 'w')
             if cell:
                 ip.run_cell_magic("prun", line, cell)
@@ -80,7 +81,7 @@ else:
                 ip.run_line_magic("prun", line)
             
             if "q" in opts:
-                sys.stdout = sys.__stdout__
+                sys.stdout = sys.stdout
             # start up a Snakeviz server
             if _check_ipynb() and not ("t" in opts or "new-tab" in opts):
                 if "f" not in opts or "q" in opts:
