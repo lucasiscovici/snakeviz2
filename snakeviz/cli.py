@@ -120,9 +120,10 @@ def main(argv=None):
         from tornado import web,httputil
         w=web.RequestHandler(web.Application(**settings),
                                      httputil.HTTPServerRequest(uri="",connection=rien()))
-        w.finish=lambda html:html
+        w.finish=lambda self,html:setattr(self,htht,html)
         from .main import VizHandler
         html=VizHandler.get(w,filename_)
+        html=w.htht
         file= open(f,"w")
         #write then close file
         file.write(html)
