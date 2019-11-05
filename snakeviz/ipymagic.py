@@ -64,22 +64,26 @@ else:
             filename = tempfile.NamedTemporaryFile().name
 
             # parse options
-            opts, line = self.parse_options(line, "tH:p:f:", "new-tab", posix=False)
+            opts, line = self.parse_options(line, "tH:p:f:q", "new-tab", posix=False)
 
             # call signature for prun
             line = "-q -D " + filename + " " + line
 
             # generate the stats file using IPython's prun magic
             ip = get_ipython()
-
+            if "q" in opts:
+                sys.stdout = open(os.devnull, 'w')
             if cell:
                 ip.run_cell_magic("prun", line, cell)
             else:
                 ip.run_line_magic("prun", line)
-
+            
+            if "q" in opts:
+                sys.stdout = sys.__stdout__
             # start up a Snakeviz server
             if _check_ipynb() and not ("t" in opts or "new-tab" in opts):
-                print("Embedding SnakeViz in this document...")
+                if "f" not in opts or "q" in opts:
+                    print("Embedding SnakeViz in this document...")
                 sv = open_snakeviz_and_display_in_notebook(filename,opts)
             else:
                 print("Opening SnakeViz in a new tab...")
