@@ -16,7 +16,7 @@ VERSION = '2.1.dev'
 
 
 # Create a simple version.py module; less trouble than hard-coding the version
-with open(os.path.join('snakeviz', 'version.py'), 'w') as f:
+with open(os.path.join('snakeviz_study', 'version.py'), 'w') as f:
     f.write('__version__ = version = %r' % VERSION)
 
 # Load up the description from README.rst
@@ -48,9 +48,9 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Topic :: Software Development'
     ],
-    packages=['snakeviz'],
+    packages=['snakeviz_study'],
     package_data={
-        'snakeviz': ['static/*.ico',
+        'snakeviz_study': ['static/*.ico',
                      'static/*.js',
                      'static/*.css',
                      'static/vendor/*.js',
@@ -60,6 +60,6 @@ setup(
     },
     install_requires=['tornado>=2.0'],
     entry_points={
-        'console_scripts': ['snakeviz = snakeviz.cli:main']
+        'console_scripts': ['snakeviz = snakeviz_study.cli:main']
     }
 )
