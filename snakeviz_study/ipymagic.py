@@ -155,7 +155,7 @@ def open_snakeviz_and_display_in_notebook(filename,opts={}):
             [
                 sys.executable,
                 "-m",
-                "snakeviz",
+                "snakeviz_study",
                 "-s",
                 "-H",
                 H,
