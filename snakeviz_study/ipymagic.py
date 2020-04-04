@@ -21,8 +21,21 @@ JUPYTER_HTML_TEMPLATE = """
 <iframe id='snakeviz-{uuid}' frameborder=0 seamless width='100%' height='1000'></iframe>
 <script>document.getElementById("snakeviz-{uuid}").setAttribute("src", "http://" + document.location.hostname + ":{port}{path}")</script>
 """
+def file_to_base64(filepath):
+    """
+    Returns the content of a file as a Base64 encoded string.
+    :param filepath: Path to the file.
+    :type filepath: str
+    :return: The file content, Base64 encoded.
+    :rtype: str
+    """
+    import base64
+    with open(filepath, 'rb') as f:
+        encoded_str = base64.b64encode(f.read())
+    return encoded_str
 
-
+def getUrlWithHtml(file):
+   return "data:text/html;base64," + file_to_base64(file).decode('utf-8')
 # Users may be using snakeviz in an environment where IPython is not
 # installed, this try/except makes sure that snakeviz is operational
 # in that case.
@@ -207,4 +220,4 @@ def open_snakeviz_and_display_in_notebook(filename,opts={}):
         )
         return sv
     sleep(2)
-    display(IFrame(f,"100%",750))
+    display(IFrame(getUrlWithHtml(f),"100%",750))
