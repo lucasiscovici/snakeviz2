@@ -1,4 +1,5 @@
 from __future__ import print_function
+from time import sleep
 
 import errno
 import subprocess
@@ -193,7 +194,6 @@ def open_snakeviz_and_display_in_notebook(filename,opts={}):
             )
         )
         return sv
-    from time import sleep
     sleep(2)
     display(
         HTML(
