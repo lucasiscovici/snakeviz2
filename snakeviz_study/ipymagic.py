@@ -169,9 +169,17 @@ def open_snakeviz_and_display_in_notebook(filename,opts={}):
             env=environ,
         )
         if f == "None":
+            lines=[]
+            o=0
             while True:
                 line = sv.stdout.readline()
                 if line.strip().startswith("snakeviz web server started"):
+                    break
+                lines.append(line)
+                sleep(2)
+                o+=1
+                if o==10:
+                    print("bugs",lines)
                     break
         return sv
     sv = _start_and_wait_when_ready()
