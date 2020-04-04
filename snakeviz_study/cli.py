@@ -124,7 +124,7 @@ def main(argv=None):
                                      httputil.HTTPServerRequest(uri="",connection=rien()))
         from .main import VizHandler
         html=VizHandler.get(w,filename_,templ="viz.html")
-        html=w.httt.decode("utf-8").replace("/static","https://cdn.jsdelivr.net/gh/lucasiscovici/snakeviz2/snakeviz/static")
+        html=w.httt.decode("utf-8").replace("/static","https://cdn.jsdelivr.net/gh/lucasiscovici/snakeviz2/snakeviz_study/static")
         file= open(f,"w")
         #write then close file
         file.write(html)
