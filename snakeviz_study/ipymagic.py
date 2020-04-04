@@ -180,7 +180,19 @@ def open_snakeviz_and_display_in_notebook(filename,opts={}):
                 sleep(2)
                 o+=1
                 if o==10:
-                    print("bugs",lines)
+                    print("bugs",lines, [
+                sys.executable,
+                "-m",
+                "snakeviz",
+                "-s",
+                "-H",
+                H,
+                "-p",
+                port,
+                "-f",
+                f,
+                filename,
+            ])
                     break
         return sv
     sv = _start_and_wait_when_ready()
