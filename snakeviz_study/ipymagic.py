@@ -28,7 +28,7 @@ JUPYTER_HTML_TEMPLATE = """
 # in that case.
 try:
     from IPython.core.magic import Magics, magics_class, line_cell_magic
-    from IPython.display import display, HTML
+    from IPython.display import display, HTML, IFrame
 except ImportError:
     pass
 else:
@@ -207,8 +207,4 @@ def open_snakeviz_and_display_in_notebook(filename,opts={}):
         )
         return sv
     sleep(2)
-    display(
-        HTML(
-            filename=f
-        )
-    )
+    display(IFrame(f,"100%",750))
