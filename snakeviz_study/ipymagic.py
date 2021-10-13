@@ -79,7 +79,7 @@ else:
             filename = tempfile.NamedTemporaryFile().name
 
             # parse options
-            opts, line = self.parse_options(line, "tH:p:f:q", "new-tab", posix=False)
+            opts, line = self.parse_options(line, "teH:p:f:q", "new-tab", posix=False)
 
             # call signature for prun
             line = "-q -D " + filename + " " + line
@@ -159,6 +159,11 @@ def open_snakeviz_and_display_in_notebook(filename,opts={}):
         f=opts["f"]
     else:
         f="None"
+        
+    if "e" in opts:
+        exec=opts["e"]
+    else:
+        exec=sys.executable
     def _start_and_wait_when_ready():
         import os
         #print(f)
@@ -166,7 +171,7 @@ def open_snakeviz_and_display_in_notebook(filename,opts={}):
         environ["PYTHONUNBUFFERED"] = "TRUE"
         sv = subprocess.Popen(
             [
-                sys.executable,
+                exec,
                 "-m",
                 "snakeviz_study",
                 "-s",
@@ -196,7 +201,7 @@ def open_snakeviz_and_display_in_notebook(filename,opts={}):
                     print("bugs",lines, [
                 sys.executable,
                 "-m",
-                "snakeviz",
+                "snakeviz_study",
                 "-s",
                 "-H",
                 H,
