@@ -79,7 +79,7 @@ else:
             filename = tempfile.NamedTemporaryFile().name
 
             # parse options
-            opts, line = self.parse_options(line, "teH:p:f:q", "new-tab", posix=False)
+            opts, line = self.parse_options(line, "tH:p:f:qe:", "new-tab", posix=False)
 
             # call signature for prun
             line = "-q -D " + filename + " " + line
