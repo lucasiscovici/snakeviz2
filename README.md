@@ -10,3 +10,5 @@ Add options:
 - -p : port
 - -H : Host
 - -e : executable
+
+tuto in [usage.ipynb](https://github.com/lucasiscovici/snakeviz2/blob/master/usage.ipynb)
