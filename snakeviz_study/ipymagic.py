@@ -79,7 +79,7 @@ else:
             filename = tempfile.NamedTemporaryFile().name
 
             # parse options
-            opts, line = self.parse_options(line, "tH:p:f:qe:", "new-tab", posix=False)
+            opts, line = self.parse_options(line, "tnH:p:f:qe:", "new-tab", posix=False)
 
             # call signature for prun
             line = "-q -D " + filename + " " + line
@@ -145,6 +145,12 @@ def open_snakeviz_and_display_in_notebook(filename,opts={}):
                         raise
                 else:
                     return s.getsockname()[1]
+                
+    if "n" in opts:
+        n=opts["n"]
+    else:
+        n="None"
+        
     if "p" in opts:
         port=opts["p"]
     else:
@@ -158,12 +164,13 @@ def open_snakeviz_and_display_in_notebook(filename,opts={}):
     if "f" in opts:
         f=opts["f"]
     else:
-        f="None"
+        f="None" if n != "None" else tempfile.NamedTemporaryFile().name
         
     if "e" in opts:
         exec=opts["e"]
     else:
         exec=sys.executable
+        
     def _start_and_wait_when_ready():
         import os
         #print(f)
