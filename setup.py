@@ -20,7 +20,7 @@ with open(os.path.join('snakeviz_study', 'version.py'), 'w') as f:
     f.write('__version__ = version = %r' % VERSION)
 
 # Load up the description from README.rst
-with open('README.rst') as f:
+with open('README.md') as f:
     DESCRIPTION = f.read()
 
 
