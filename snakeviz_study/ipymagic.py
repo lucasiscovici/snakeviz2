@@ -108,7 +108,7 @@ else:
                 )
             # give time for the Snakeviz page to load then shut down the server
             time.sleep(3)
-            if "f" not in opts:
+            if "n" in opts:
                 sv.terminate()
 
 
